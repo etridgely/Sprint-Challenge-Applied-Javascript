@@ -30,6 +30,7 @@ function createHeader() {
     header.appendChild(title);
     header.appendChild(temp);
     
+    //content
     date.textContent = `SMARCH 28, 2019`;
     title.textContent = `Lambda Times`;
     temp.textContent = `98°`;
