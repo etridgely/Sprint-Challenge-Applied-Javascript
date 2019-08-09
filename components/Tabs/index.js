@@ -15,27 +15,27 @@
 // </div>
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
-    .then (title => {
-        console.log('title: ', title)
-        const newTab = title.data;
-
-        const tabs = document.querySelector('.tabs');
-        const lambdaTab = createTab(newTab)
-        tabs.appendChild(lambdaTab)
-    })
+    .then (response => {
+    console.log(response)
+        response.data.topics.forEach(title => {
+            const lambdaTab = createTab(title);
+            console.log(lambdaTab)
+        })
+    });
 
 function createTab(arg) {
     //create elements
     const tab = document.createElement('div');
-    const topics = document.createElement('div');
-    const title = document.createElement('span');
+    const topics = document.querySelector('.topics');
 
     //classes
-    tab.classList.add('tabs');
-    topics.classList.add('topics');
+    tab.classList.add('tab');
 
-    //structure
-    tab.textContent = arg.topics
+    //set structure
+    topics.appendChild(tab);
+
+    //content
+    tab.textContent = arg
 
     return tab;
 }
